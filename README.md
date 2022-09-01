@@ -1,1 +1,1 @@
-My first shell script
+Shell basics
