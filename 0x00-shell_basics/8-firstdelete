@@ -1,0 +1,1 @@
+#!/bin/bash\nrm -r /tmp/my_first_directory/betty
