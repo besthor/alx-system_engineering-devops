@@ -1,2 +1,2 @@
 #!/BIN/BASH
-ls -t . | head
+ls -t | head
