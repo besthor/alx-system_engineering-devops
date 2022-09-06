@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -c 1 paste -c -d ''
+awk '{print $1}' 102-arcostic
