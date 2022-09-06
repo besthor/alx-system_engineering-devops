@@ -1,2 +1,2 @@
 #!/bin/bash
-awk '{print $1}' 102-arcostic
+echo "$(cut -c 1  |  tr -d '\n')"
