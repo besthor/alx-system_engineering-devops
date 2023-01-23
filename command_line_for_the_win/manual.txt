@@ -484,7 +484,7 @@ ANS	find -type f ! -regex '.*\(exe\|txt\)$' -delete
 ANS	find -type f -name '*-*' -delete
 
 QUESTION: 43
-here are two files in this directory, ps-ef1 and ps-ef2. Print the contents of both files sorted by PID and delete repeated lines.
+There are two files in this directory, ps-ef1 and ps-ef2. Print the contents of both files sorted by PID and delete repeated lines.
 
 ANS	cat ps-ef*|sort -u|sort -nk2
 ANS	sort -k2 -n ps-ef* | awk '{if(!seen[$0]++){print}}'
