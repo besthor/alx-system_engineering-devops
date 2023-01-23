@@ -1,0 +1,497 @@
+QUESTION: 1
+Your first challenge is to print "hello world" on the terminal in a single command.
+Hint: There are many ways to print text on the command line, one way is with the 'echo' command. Try it below and good luck!
+
+ANS	cat <<< "hello world"
+ANS	echo -e hello world
+ANS	printf '%s %s\n' hello world
+ANS	echo "hello world "
+ANS	echo "hello world" > hello.txt && cat hello.txt
+ANS	echo "uryyb jbeyq" | tr '[n-za-m]' '[a-z]'
+
+QUESTION: 2
+Print the current working directory.
+
+ANS	pwd dir
+ANS	echo $PWD
+ANS	pwd [-LP]
+ANS	pwd $	
+
+QUESTION: 3
+List names of all the files in the current directory, one file per line.
+
+ANS	for f in *; do echo $f; done
+ANS 	ls | sort
+ANS	ls -p | grep -v /
+ANS	ls -ch
+
+QUESTION: 4
+There is a file named access.log in the current directory. Print the contents.
+
+ANS	cat  access.log
+ANS	grep '.*' access.log
+ANS	dd if=access.log 2>/dev/null
+ANS	cat a*.log
+
+QUESTION: 5
+Print the last 5 lines of "access.log".
+
+ANS	cat access.log | tail -n -5
+ANS	tail --lines 5 access.log
+ANS	tail access.log --lines=5
+
+QUESTION: 6
+Create an empty file named take-the-command-challenge in the current working directory.
+
+ANS	touch take-the-command-challenge
+ANS	cat > take-the-command-challenge
+
+QUESTION: 7
+Create a directory named tmp/files in the current working directory
+Hint: The directory "tmp/" doesn't exist, with one command you need to create both "tmp/" and "tmp/files"
+
+ANS	 mkdir --parents tmp/files
+
+QUESTION: 8
+Copy the file named take-the-command-challenge to the directory tmp/files
+
+ANS	cp take-the-command-challenge  tmp/files
+ANS	mv take* tmp/files/
+
+QUESTION: 9
+A symbolic link is a type of file that is a reference to another file.
+Create a symbolic link named take-the-command-challenge that points to the file tmp/files/take-the-command-challenge.
+
+ANS	ln --symbolic tmp/files/take-the-command-challenge	
+
+QUESTION: 10
+Move the file named take-the-command-challenge to the directory tmp/files
+
+ANS	mv  take-the-command-challenge  tmp/files
+ANS	ln -sf tmp/files/take-the-command-challenge
+ANS	ln -s   tmp/files/take-the-command-challenge take-the-command-challenge
+
+QUESTION: 11
+Delete all of the files in this challenge directory including all subdirectories and their contents.
+Hint: There are files and directories that start with a dot ".", "rm -rf *" won't work here!
+
+ANS	rm -r $(ls -a)
+
+QUESTION: 12
+There are files in this challenge with different file extensions.
+Remove all files with the .doc extension recursively in the current working directory.
+
+ANS	find -type f -name '*.doc' -print -delete
+
+QUESTION: 13
+There is a file named access.log in the current working directory. Print all lines in this file that contains the string "GET".
+
+ANS	cat access.log | grep -E "GET"
+
+QUESTION: 14
+Print all files in the current directory, one per line (not the path, just the filename) that contain the string "500".
+
+ANS	grep -rl "500"
+ANS ls | grep -lr "500"
+ANS grep -lr "500"
+ANS grep 500 * -l
+ANS grep -ls "500" *
+ANS ls | grep -rl 500
+ANS grep 500 -l *
+ANS grep "500" * -l
+
+QUESTION: 15
+Print the relative file paths, one path per line for all filenames that start with "access.log" in the current directory.
+
+ANS	find -name "access.log*"
+
+
+QUESTION: 16
+Print all matching lines (without the filename or the file path) in all files under the current directory that start with "access.log" that contain the string "500".
+
+QUESTION: 17
+Note that there are no files named access.log in the current directory, you will need to search recursively.
+
+ANS	find . -name 'access.log*' | xargs grep -h '500' 
+
+QUESTION: 18
+Extract all IP addresses from files that start with "access.log" printing one IP address per line.
+
+ANS	grep -rw . | awk '{print $1}
+ANS for i in $(find . -name "access.log*"); do cat $i | awk '{print $1}'; done
+ANS find . -type f -name "access.log*" -exec grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' {} \; 
+ANS grep -ro "^[0-9.]*"
+ANS grep -E ^[0-9.]* -rho
+ANS grep -hr . | awk '{print $1}'
+ANS grep -ro ^[0-9.]*  **/access.log*
+ANS  -name "access.log*" -type f | grep -ro ^[0-9.]*
+ANS grep -rw . | awk '{print $1}'
+ANS grep -Goh ^[0-9.]* **/access.log*
+ANS find -name 'access.log*' | grep -ro -E "([0-9]{1,3}[\.]){3}[0-9]{1,3}"
+ANS grep -roE "([0-9]{1,3}\.){3}[0-9]{1,3}"
+ANS grep -roE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
+ANS find -type f -name "access.log*" | xargs cat | cut -d' ' -f1
+ANSfind . -name "access.log*" | grep -r "" | cut -d ':' -f 2 | cut -d ' ' -f 1
+ANS find . -name "access.log*" -exec egrep -ho "^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" {} \;
+ANS find . -type f -iname '*access.log*' -exec grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}' {} +
+ANS grep -rEh '([0-9]{1,3}\.){3}' --include=*access.log* | cut -d " " -f 1
+
+QUESTION: 19
+Count the number of files in the current working directory. Print the number of files as a single integer.
+
+ANS	find . -type f -print | wc -l
+
+QUESTION: 20
+Print the contents of access.log sorted.
+ANS cat "access.log" | sort
+
+cat access.log |sort
+cat "access.log" | sort
+cat access.log | sort -u
+cat access.log| sort
+sort access.log | cat
+find . -type f -name 'access.log*' |xargs -I{} cat {} | sort
+sort -u access.log
+cat access.log | sort access.log
+sort -b access.log
+cat access.log  | sort
+cat access.log |sort -u
+sort access.log && cat > access.log
+cat access.log | sort -i
+cat access.log | sort -d
+find . -name access.log | xargs cat | sort
+sort -M access.log
+sort -d access.logsort **/access.log*
+cat access.log | sort -b
+cat access.log | uniq | sort
+cat access.log|sort access.log
+sort -d access.log > sorted | cat sorted
+find . -name acces\* -exec cat '{}' \;|sort
+find . -name 'access.log*' | xargs cat | sort
+
+QUESTION: 21
+Print the number of lines in access.log that contain the string "GET".
+ANS	cat access.log |grep GET |wc -l
+
+grep GET  access.log | wc -l
+cat access.log | grep "GET" -c
+cat access.log |grep GET |wc -l
+grep -w "GET" access.log | wc -l
+grep -E "GET" access.log | wc -l
+cat access.log | grep -i "GET" | wc -l
+cat access.log | sort | grep GET | wc -l
+grep -r GET | wc -l
+grep -ro "GET" | wc -l
+grep  "GET" access.log | wc -l
+cat access.log| grep GET | wc -l
+grep -i "GET" access.log | wc -l
+cat access.log | grep -i GET | wc -l
+cat access.log | grep -i "get" | wc -l
+grep -c  GET access.log
+
+QUESTION: 22
+The file split-me.txt contains a list of numbers separated by a ; character.
+Split the numbers on the ; character, one number per line.
+
+ANS	cat split-me.txt | sed 's/\;/\n/g'
+
+cat split-me.txt | tr  ";" "\n"
+cat split-me.txt | awk -F";" '{out=""; for(i=1;i<=NF;i++){out=out$i"\n"}; print out}'
+tr ';' "\n" < split-me.txt
+cat split-me.txt |tr ';' '\n'
+cat split-me.txt | sed  "s/;/\n/g"
+cat split-me.txt | sed 's/\;/\n/g'
+cat split-me.txt | sed s/";"/"\n"/g
+for i in $(cat split-me.txt | sed 's/;/ /g'); do echo $i; done
+cat split-me.txt |tr \; \\n
+cat split-me.txt| tr ';' '\n'
+cat split-me.txt | tr ";", "\n"
+cat split-me.txt | tr -s ";" "\n"
+cat split-me.txt | sed "s/;/""\n/g"
+cat * | tr ";" "\n"
+
+QUESTION: 23
+Print the numbers 1 to 100 separated by spaces.
+
+ANS	for i in {1..100}; do echo -n "$i " ; done
+
+seq 1 100 | tr '\n' ' '
+echo `seq 1 100`
+for i in {1..100};do echo -n "$i ";done
+echo {1..100} " "
+seq -s' ' 1 100
+for i in {1..100}; do printf "$i "; done
+seq 1 100 | tr "\n" " "
+for i in $(seq 1 100); do echo -n "$i "; done
+for i in {1..100}; do echo -n "$i " ; done
+for i in {1..100}; do echo -n $i; if [ $i -lt 100 ]; then echo -n ' '; fi; done
+seq -s" " 100
+seq -s\  1 100
+echo {1..100} ""
+seq 100|tr "\n" " "
+printf '%s ' {1..100}
+
+QUESTION: 24
+This challenge has text files (with a .txt extension) 
+that contain the phrase "challenges are difficult". Delete this phrase from all text files recursively.
+Note that some files are in subdirectories so you will need to search for them.
+
+ANS	find . -name "*.txt" -exec sed -i "s/challenges are difficult//g" {} +
+
+QUESTION: 25
+The file sum-me.txt has a list of numbers, one per line. Print the sum of these numbers.
+
+ANS	let sum=0; for number in $(cat sum-me.txt); do ((sum+=$number)); done; echo $sum
+
+awk '{s+=$1}END{print s}' sum-me.txt
+let sum=0; for s in $(cat sum-me.txt); do ((sum+=$s)); done; echo $sum
+let sum=0; for number in $(cat sum-me.txt); do ((sum+=$number)); done; echo $sum
+awk '{s+=$0} END {print s}' sum-me.txt
+awk '{sum+=$1}END{print sum}' sum-me.txt
+echo $(cat sum-me.txt | tr "\n" '+')0 | bc
+awk '{sum += $1}END{print sum}' sum-me.txt
+awk '{ sum += $1 } END { print sum }' sum*
+cat sum-me.txt | awk '{sum+=$1} END {print sum}'
+awk '{a+=$0}END{print a}' **/sum-me.txt
+cat sum-me.txt| head -10 | paste -sd+ - | bc
+cat sum-me.txt | awk '{SUM += $1} END {print SUM}'
+a=0; for x in $(cat sum-me.txt); do a=$((a+x)); done; echo $a
+awk '{s+=$1} END{print s}' sum-me.txt
+awk '{total+=$0;}END{print total;}' sum-me.txt
+
+QUESTION: 26
+Print all files in the current directory recursively without the leading directory path.
+	
+ANS find -type f | xargs basename -a
+
+find . -type f | xargs basename -a
+find . -type f | xargs -l1 basename
+find . -type f | xargs -n1 basename
+find . -type f | xargs -n 1 basename
+find . -type f -exec "basename" {} \;
+find -type f | rev | cut -d/ -f1 | rev
+find . -type f -name "*" -exec basename {} \;
+find . -type f | sed -e 's/.*\///'
+find -type f -exec basename {} \;\
+find ./ -type f -exec basename {} \;
+find . -type f -exec basename "{}" \;
+find . -type f -exec basename -a {} +
+find . -type f | awk -F/ '{ print $NF }'
+find . -name "*" -type f | sed 's/.*\///g'
+find . -type f | awk -F/ '{ print $(NF) }'
+find . -type f | xargs -I '{}' basename '{}'
+
+QUESTION: 27
+Rename all files removing the extension from them in the current directory recursively.
+
+ANS find . -type f -exec rename 's/\.[^.]+$//' {} +
+
+find * -type f -exec  rename 's/\..*//' {} +
+for i in $(find -type f); do mv $i ${i%.*};done
+for i in $(find . -type f); do mv $i ${i%.*}; done
+find . -type f -exec bash -c 'mv "$1" "${1%.*}"' - '{}' \;
+rm -rf * | ls
+find . -type f | rename 's/\.\w*$//'
+rename "s/\..*$/l/g" $(find * -type f)
+find * -type f | rename 's/\.;*//' | ls
+find . type f |  file-rename 's/\.[^.]+$//'
+find * -type f -exec rename 's/\..*//' {} \;
+find . -type f -exec rename 's/\.[^.]+$//' {} +
+for i in $(find -type f); do mv "$i" "${i%.*}"; done
+find . -type f -exec sh -c 'mv "$0" "${0%.*}"' {} \;
+
+QUESTION: 28
+The files in this challenge contain spaces. 
+List all of the files (filenames only) in the current directory but replace all spaces with a '.' character.
+ANS	ls | xargs -d "\n" rename "s/ /\./g"; ls
+
+find -type f -printf "%f\n"|tr ' ' .
+find -type f -exec basename {} \; | sed "s/ /./g"
+ls -A | tr ' ' '.'
+ls -1 | tr " " "."
+ls | sed 's/\ /./g'
+ls -A | sed 's/ /./g'
+ls -A | sed 's/ /\./g'
+ls -A | sed -e "s/ /./g"
+find * -type f | sed 's/ /./g'
+ls | xargs -d "\n" rename "s/ /\./g"; ls
+
+QUESTION: 30
+In this challenge there are some directories containing files with different extensions.
+Print all directories, one per line without duplicates that contain one or more files with a ".tf" extension
+
+ANS	find . -type f -name "*.tf" -printf "%h\n" | sort | uniq
+
+find . -name "*.tf" -printf "%h\n" | sort -u
+find . -name "*.tf" -exec dirname {} \; | uniq
+find -type f -name "*.tf" -printf "%h\n"|sort|uniq
+find -type f -name "*.tf" -exec dirname {} \; | uniq
+for FILE in $(find . -name "*.tf"); do echo ${FILE%/*}; done | sort -u
+find -type f -name '*.tf' -printf '%h\n' | sort | uniq
+find * -type f -name "*.tf" -exec dirname {} \; | uniq
+find -type f -name '*.tf' -exec dirname {} \; | sort -u
+find . -type f -name "*.tf" -printf "%h\n" | sort | uniq
+for i in `find . -name *.tf`; do echo ${i%\/*}; done | uniq
+find . -name "*.tf" -exec bash -c 'dirname $@ | uniq' -- {} +
+find . -type d -exec bash -c "ls -1 {}/*.tf 2>/dev/null | grep -q . && echo {}" \; | sort | uniq
+dirname **/*.tf |uniq
+dirname **/*/*.tf |uniq
+
+QUESTION: 31
+There are a mix of files in this directory that start with letters and numbers.
+Print the filenames (just the filenames) of all files that start with a number recursively in the current directory.
+ANS	find -type f -regex ".*/[0-9][^/]*" -printf "%f\n"
+
+QUESTION: 32
+Print the 25th line of the file faces.txt
+
+ANS	sed -n '25p;26q' faces.txt
+
+QUESTION: 33
+Print the lines of the file reverse-me.txt in this directory in reverse line order so that the last line is printed first and the first line is printed last.
+
+~~~~~~~~~~~~~~~~~~~~~
+In the future
+Environmental destruction will be the norm
+No longer can it be said that
+My peers and I care about this earth
+It will be evident that
+My generation is apathetic and lethargic
+It is foolish to presume that
+There is hope
+~~~~~~~~~~~~~~~~~~~~~
+-Jonathan Reed "The Lost Generation"
+
+ANS	cat reverse-me.txt| tac
+
+QUESTION: 34
+Print the file faces.txt, but only print the first instance of each duplicate line, even if the duplicates don't appear next to each other.
+Note that order matters so don't sort the lines before removing duplicates.
+
+ANS	cat -n faces.txt | sort -u -k 2 | sort -n | cut -f 2-
+
+
+QUESTION: 35
+The file random-numbers.txt contains a list of 100 random integers. Print the number of unique prime numbers contained in the file.
+
+ANS	for num in $(cat random-numbers.txt); do [[ $num == $(factor $num | cut -d" " -f2) ]] && echo $num; done | sort | uniq | wc -l
+ANS	 sort -u random-numbers.txt | factor | awk "NF==2" | wc -l
+
+cat random-numbers.txt | sort| uniq | factor | awk 'NF==2' | wc -l
+cat random-numbers.txt | sort | factor | awk "NF==2" | uniq | wc -l
+cat  "random-numbers.txt" | sort | uniq | factor | awk "NF==2" | wc -l
+cat random-numbers.txt | factor |  awk 'NF==2{print $2}' | awk '!seen[$0]++' | wc -l
+for num in $(cat random-numbers.txt); do [[ $num == $(factor $num | cut -d" " -f2) ]] && echo $num; done | sort | uniq | wc -l
+sort -u random-numbers.txt | factor | awk 'NF==2'  |wc -l
+cat random-numbers.txt |sort|uniq|factor|awk 'NF==2'|wc -l
+
+QUESTION: 36
+access.log.1 and access.log.2 are http server logs.
+Print the IP addresses common to both files, one per line.
+
+ANS	awk 's[$1]++{print $1}' access.log.*
+awk 's[$1]++{print $1}' a*
+awk 's[$1]++{print $1}' access.log*
+awk ' s[$1]++{print $1}' a*
+comm -12 <(awk '{print $1}' access.log.1|sort -u) <(awk '{print $1}' access.log.2| sort -u)
+awk ' s [$1]++{print $1}' a*
+comm -1 -2 <(awk '{print $1}' access.log.1|sort -u) <(awk '{print $1}' access.log.2|sort -u)
+awk 's[$1]--{print $1}' a*
+awk 's[$1]++{print $1}' access.log.*
+awk 's[$1]++{print $1 }' access.log.*
+join -j 1 <(sort access.log.1) <(sort access.log.2)|cut -f 1 -d ' '
+cat access.log.* | awk '{print $1}' | sort | uniq -c | awk '$1=="2" {print $2}'
+comm -12 <(cut -d' ' -f1 access.log.1 | sort) <(cut -d' ' -f1 access.log.2 | sort)
+awk 'a[$1]++{print $1}' access.log.*
+cat a* | sed "s/ .*//" | sort | uniq -d
+cat access.log* | awk 'a[$1]++{print $1}'
+awk '{print $1}' access.log.* | sort | uniq -d
+awk 'a[$1]++ {print $1}' {access.log.1,access.log.2}
+cat access.log.* | awk '{print $1}' | sort | uniq -d
+awk 's[$1]++{print$1}' a*
+awk 'a[$1]++{print $1}' a*
+awk 's[$1]++{print  $1}' access*
+awk 'g[$1]++{print $1}' access.log.*
+awk 'A[$1]++{print $1}' access.log.*
+awk 's[$1]++{print $1}' {access.log.1,access.log.2}
+cut -d ' ' -f 1 access.log.1 access.log.2 | sort | uniq -d
+cat access.log.{1,2} | sed -e 's/\s.*//' | sort -n | uniq -d
+IP=$(cat access.log.2 |cut -d ' ' -f1) ; grep "${IP}" access.log.1 | cut -d ' ' -f1
+comm -12 <(sort access.log.1 | awk {'print $1'}) <(sort access.log.2 | awk {'print $1'})
+awk 'x[$1]++{print $1}' a*
+awk 'a[$1]++ {print $1}' a*
+awk 's[$1]--{print$1}' acc*
+awk 'c[$1]++ {print $1}' a*
+awk 's[$1]++{print$1}' access.log*
+awk 'IP[$1]++{print $1}' access.log.*
+awk 'ip[$1]++ {print $1}' access.log.*
+cut -d ' ' -f 1 access.log* | sort | uniq -d
+awk 'seen[$1]++{print $1}' access.log.1 access.log.2
+grep -f <(awk '{ print $1; }' access.log.1) access.log.2 | awk '{ print $1; }'
+cat access.log.* | awk '{print $1}' | sort | uniq -c | awk '$1=="2"{print $2}'
+cat access.log.1 | awk '{print $1}' | xargs -I% grep % access.log.2 | awk '{print $1}'
+cat access.log.* | egrep -o "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"|sort|uniq -d
+comm -12 <(awk '{print $1}' access.log.1|sort -u) <(awk '{print $1}' access.log.2|sort -u)
+comm -12 <(sort <(cat access.log.1 | cut -d ' ' -f1)) <(sort <(cat access.log.2 | cut -d ' ' -f1))
+awk 'ar[$1]++ {print $1}' a*
+awk 'a[$1]++ {print $1}' access*
+awk 'g[$1]++{print $1}' access.log*
+awk 's[$1]++ {print $1}' access.log.*
+awk 'seen[$1]++{print $1}' access.log*
+cat access.log.* | awk 'ip[$1]++ {print $1}'
+awk '{print $1}' access.log.{1,2} | awk 'a[$0]++'
+
+QUESTION: 37
+Print all matching lines (without the filename or the file path) in all files under the current directory that start with "access.log", 
+where the next line contains the string "404".
+Note that you will need to search recursively.
+
+ANS	find -type f -name "access.log*" | xargs awk '{ if ($0 ~ "404") print last; last=$0 }'
+ANS	 find -name "access.log*" -exec grep -B 1 404 \{} \;|grep -v "--" --|awk 'NR % 2==1 {print}'
+
+
+QUESTION: 38
+Print all files with a .bin extension in the current directory that are different than the file named base.bin.
+
+ANS	for i in $(ls *.bin); do if [[ `cmp base.bin $i` ]]; then echo $i; fi; done
+ANS	diff *.bin --to-file base.bin | cut -d ' ' -f3
+
+
+QUESTION: 39
+There is a file: ./.../ /. .the flag.txt
+Show its contents on the screen.
+
+ANS	find -type f -name "*flag*" -exec cat "{}" \;
+ 
+
+QUESTION: 40
+How many lines contain tab characters in the file named file-with-tabs.txt in the current directory.
+
+ANS	sed -n '/\t/p' file-with-tabs.txt| wc -l
+ANS	grep -c "$(printf '\t')" file-with-tabs.txt
+
+QUESTION: 41
+There are files in this challenge with different file extensions.
+Remove all files without the .txt and .exe extensions recursively in the current working directory.
+
+ANS	find -type f ! -name "*.txt" ! -name "*.exe" -delete
+ANS	find -type f ! -regex  '.*\(txt\|exe\)$' -delete
+
+QUESTION: 42
+There are some files in this directory that start with a dash in the filename. Remove those files.
+
+ANS	find -type f ! -regex '.*\(exe\|txt\)$' -delete
+ANS	find -type f -name '*-*' -delete
+
+QUESTION: 43
+here are two files in this directory, ps-ef1 and ps-ef2. Print the contents of both files sorted by PID and delete repeated lines.
+
+ANS	cat ps-ef*|sort -u|sort -nk2
+ANS	sort -k2 -n ps-ef* | awk '{if(!seen[$0]++){print}}'
+
+QUESTION: 44
+In the current directory there is a file called netstat.out.
+Print all the IPv4 listening ports sorted from the higher to lower.
+
+ANS	grep "LISTEN" netstat.out | grep -v "unix" | awk '{print $4}' | cut -d ':' -f 2 | sort -rn
+ANS	awk {'if ($1 == "tcp" && $6 == "LISTEN") print $4}' <net*|sed 's/.*://'|sort -nru
