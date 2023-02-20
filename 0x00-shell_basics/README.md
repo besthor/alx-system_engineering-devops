@@ -1,5 +1,5 @@
 # SHELL BASICS
 ![](https://www.tutorialkart.com/wp-content/uploads/2017/10/bash-shell-tutorial.png)
 
-# GENERAL SYNTAX
+# GENERAL SYNTAX FOR PROJECT  TASKS
 ![](https://docs.rackspace.com/blog/basics-of-shell-script/Picture2.png)
