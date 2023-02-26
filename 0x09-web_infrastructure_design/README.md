@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is a collection of web infrastructure 
++ This project is a collection of web infrastructure 
 ##  whiteboarding  each task
 
 + Simple web stack - 
