@@ -1,1 +1,5 @@
-a script that prints the absolute path name of the current working directory
+# SHELL BASICS
+![](https://www.tutorialkart.com/wp-content/uploads/2017/10/bash-shell-tutorial.png)
+
+# GENERAL SYNTAX FOR PROJECT  TASKS
+![](https://docs.rackspace.com/blog/basics-of-shell-script/Picture2.png)
