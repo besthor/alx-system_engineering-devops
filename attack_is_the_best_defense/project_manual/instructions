@@ -1,20 +1,21 @@
-Concepts
+# Concepts
 For this project, we expect you to look at these concepts:
 
-Network basics
-Docker
+- Network basics
+- Docker
 
-Resources
+##Resources
 Read or watch:
 
-Network sniffing
-ARP spoofing
-Connect to SendGrid’s SMTP relay using telnet
-What is Docker and why is it popular?
-Dictionary attack
-man or help:
+- Network sniffing
+- ARP spoofing
+- Connect to SendGrid’s SMTP relay using telnet
+- What is Docker and why is it popular?
+- Dictionary attack
 
-tcpdump
-hydra
-telnet
-docker
+### man or help:
+
+- tcpdump
+- hydra
+- telnet
+- docker
