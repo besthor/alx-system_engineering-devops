@@ -3,7 +3,9 @@ For this project, we expect you to look at these concepts:
 
 - Network basics
 - Docker
-![](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/01c5a1e3f29d290b188d34be5cf534d3255058a7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230322%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230322T072214Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=5c7a0531d2c021819a329db05534416142205d7171f6fa93df473b8db8c8e248)
+![](https://www.alpinesecurity.com/wp-content/uploads/2020/02/offline-password-cracking.jpg)
+
+![](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/01c5a1e3f29d290b188d34be5cf534d3255058a7.png)
 
 ## Resources
 Read or watch:
