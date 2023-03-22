@@ -1,23 +1,25 @@
-Concepts
+# Concepts
 For this project, we expect you to look at these concepts:
 
-Network basics
-Docker
+- Network basics
+- Docker
 ![](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/01c5a1e3f29d290b188d34be5cf534d3255058a7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230322%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230322T072214Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=5c7a0531d2c021819a329db05534416142205d7171f6fa93df473b8db8c8e248)
-Resources
+
+## Resources
 Read or watch:
 
-Network sniffing
-ARP spoofing
-Connect to SendGrid’s SMTP relay using telnet
-What is Docker and why is it popular?
-Dictionary attack
-man or help:
+- Network sniffing
+- ARP spoofing
+- Connect to SendGrid’s SMTP relay using telnet
+- What is Docker and why is it popular?
+- Dictionary attack
 
-tcpdump
-hydra
-telnet
-docker
+### man or help:
+
+- tcpdump
+- hydra
+- telnet
+- docker
 
 Security is a vast topic, and network security is an important part of it. A lot of very sensitive information goes over networks that are used by many people, and some people might have bad intentions. Traffic going through a network can be intercepted by a malicious machine pretending to be another network device. Once the traffic is redirected to the malicious machine, the hacker can keep a copy of it and analyze it for potential interesting information. It is important to note that the traffic must then be forwarded to the actual device it was supposed to go (so that users and the system keep going as if nothing happened).
 
