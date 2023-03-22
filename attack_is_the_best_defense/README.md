@@ -3,7 +3,7 @@ For this project, we expect you to look at these concepts:
 
 - Network basics
 - Docker
-- 
+
 ![](https://www.alpinesecurity.com/wp-content/uploads/2020/02/offline-password-cracking.jpg)
 
 ## Resources
