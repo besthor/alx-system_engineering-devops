@@ -42,10 +42,10 @@ General
 Your Ubuntu 20.04 VM should have Puppet 5.5 preinstalled.
 
 ## Install puppet
-$ apt-get install -y ruby=1:2.7+1 --allow-downgrades
-$ apt-get install -y ruby-augeas
-$ apt-get install -y ruby-shadow
-$ apt-get install -y puppet
+<p>$ apt-get install -y ruby=1:2.7+1 --allow-downgrades</p>
+<p>$ apt-get install -y ruby-augeas</p>
+<p>$ apt-get install -y ruby-shadow</p>
+<p>$ apt-get install -y puppet</p>
 #
 You do not need to attempt to upgrade versions. This project is simply a set of tasks to familiarize you with the basic level syntax which is virtually identical in newer versions of Puppet.
 
