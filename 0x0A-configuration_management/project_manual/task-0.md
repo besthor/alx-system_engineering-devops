@@ -25,6 +25,7 @@ root@6712bef7a528:~# ls -l /tmp/school
 -rwxr--r-- 1 www-data www-data 13 Mar 19 23:12 /tmp/school
 root@6712bef7a528:~# cat /tmp/school
 I love Puppetroot@6712bef7a528:~#
+#
 ## Repo:
 
 - GitHub repository: alx-system_engineering-devops
