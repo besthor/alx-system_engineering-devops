@@ -6,7 +6,26 @@
 
 ## Description
 
-This is a 3-server web infrastructure that is secured, monitored, and serves encrypted traffic.
++ This is a 3-server web infrastructure that is secured, monitored, and serves encrypted traffic.
+<br/> Firewall filters network tarffic in and out a machine
+
+<br/> HTTPS is setup so that if someone intercepts the ttraffic, it cannot be read.
+
+<br/> Mointoring can be used to check if somthing is broken or slow.
+
+<br/> The monitoring setup is composed of a client collecting and sending data and sending it to the monitoring syatem.
+
+<br/> Configure monitoring to:collect web server data and have an alert triggered if **QPS** is getting out of control.
+
+<br/> Terminating **SSL** at the laod balancer level is an issue because the traffic between the load balancer and the web servers is unencrypted.
+
+<br/> Having only one **MySQL** server capable of accepting writes is an issue  because if the master goes down, the application cannot write to the database anymore.
+
+<br/> Having servers with all the smae componets (database, web server and application server) might be a problem because their consumption will not grow the same way between each of them (we might want to have more database servers than application servers for instance).
+
+<br/> Having servers with all the same components (database, web server and application server) might be  a problem because when there is maintenance performed on a server for a specific component, it will affect other componeents that are on it.
+
+<br/> Load-balancer is a **SPOF**
 
 ## Specifics About This Infrastructure
 
