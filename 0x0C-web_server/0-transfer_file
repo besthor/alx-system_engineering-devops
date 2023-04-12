@@ -1,23 +1,17 @@
 #!/usr/bin/env bash
 
-# Check if all required parameters are provided
-if [ "$#" -ne 4 ]; then
-    echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
-    exit 1
+if [[ "$#" -lt 4 ]]; then
+  echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+  exit 1
 fi
 
-# Get the command line arguments
-path_to_file="$1"
-ip="$2"
-username="$3"
-path_to_ssh_key="$4"
+file_path=$1
+ip=$2
+username=$3
+ssh_key=$4
 
-# Transfer the file using scp
-scp -o StrictHostKeyChecking=no -i "$path_to_ssh_key" "$path_to_file" "$username@$ip":~/
+# Disable strict host key checking
+ssh_options="-o StrictHostKeyChecking=no"
 
-# Check the exit status of scp
-if [ "$?" -eq 0 ]; then
-    echo "File transfer succeeded"
-else
-    echo "File transfer failed"
-fi
+# Transfer the file to the user home directory
+scp -i "$ssh_key" $ssh_options "$file_path" "$username@$ip":~
