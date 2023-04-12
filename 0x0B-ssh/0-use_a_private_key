@@ -3,4 +3,4 @@
 # using the private key ~/.ssh/school with the user ubuntu.
 # Allows us to connect to my server using the private key with user ubuntu
 
-ssh-copy-id -i ~/.ssh/school.pub ubuntu@54.158.191.245
+ssh-copy-id -i ~/.ssh/school.pub ubuntu@54.209.233.155
