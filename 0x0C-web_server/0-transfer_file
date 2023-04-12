@@ -1,17 +1,27 @@
 #!/usr/bin/env bash
 # A Bash script that transfers a file from a client to a server:
+
+# Check if at least 4 arguments are passed to the script
 if [[ "$#" -lt 4 ]]; then
   echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
   exit 1
 fi
+
+# Assign the arguments to variables for readability
 
 file_path=$1
 ip=$2
 username=$3
 ssh_key=$4
 
-# Disable strict host key checking
+# Disable strict host key checking for the ssh connection
 ssh_options="-o StrictHostKeyChecking=no"
 
-# Transfer the file to the user home directory
+# Use scp to transfer the file to the user's home directory on the remote server
+# -i option specifies the private key to use for authentication
+# $ssh_options variable sets the ssh options we need to disable strict host key checking
+# $file_path is the path to the file we want to transfer
+# $username@$ip specifies the user and IP of the remote server we want to transfer the file to
+# :~ specifies the user's home directory on the remote server
+
 scp -i "$ssh_key" $ssh_options "$file_path" "$username@$ip":~
