@@ -9,7 +9,7 @@ Read or watch:
 - Public Key Authentication for SSH
 - How Secure Shell Works
 - SSH Crash Course (Long, but highly informative. Watch this if configuring SSH is still confusing. It may be helpful to watch at x1.25 speed or above.)
-![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVKplXLUIvChpT2buuaLubBWRoTIVns4WYT6JvJk0VUfV-d2Y4n8OmBQ0mTX1AL2_A9Gk&usqp=CAU)
+#
 ![](https://assets.website-files.com/5ff66329429d880392f6cba2/61c1b963247368113bbeef17_Secure%20Shell%20work.png)
 ![](https://www.ipxo.com/app/uploads/2022/02/What-is-SSH.jpg)
 
