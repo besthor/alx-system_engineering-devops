@@ -20,13 +20,12 @@ Read or watch:
 - Internet Engineering Task Force
 - Request for Comments
 ## man or help:
-
 - ssh
 - ssh-keygen
 - env
 # Learning Objectives
 ## General
-- - What is a server
+- What is a server
 - Where servers usually live
 - What is SSH
 - How to create an SSH RSA key pair
