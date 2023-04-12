@@ -15,7 +15,7 @@ Read or watch:
 
 ## For reference:
 
-- - RFC 7231 (HTTP/1.1)
+- RFC 7231 (HTTP/1.1)
 - RFC 7540 (HTTP/2)
 ## man or help:
 
