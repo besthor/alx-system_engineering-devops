@@ -3,24 +3,18 @@
 ## Resources
 Read or watch:
 
-- How the web works
-- Nginx
-- How to Configure Nginx
-- Child process concept page
-- Root and sub domain
-- HTTP requests
-- HTTP redirection
-- Not found HTTP response code
+- How the web works     - Root and sub domain
+- Nginx                 - HTTP requests 
+- How to Configure Nginx    - HTTP redirection
+- Child process concept page    - Not found HTTP response code
 - Logs files on Linux
-
 ## For reference:
 
-- RFC 7231 (HTTP/1.1)
-- RFC 7540 (HTTP/2)
-## man or help:
+- RFC 7231 (HTTP/1.1)   - RFC 7540 (HTTP/2)
 
-- scp
-- curl
+## man or help:
+- scp   - curl
+
 # General
 * What is the main role of a web server
 * Why web servers usually have a parent process and child processes
@@ -29,9 +23,4 @@ Read or watch:
 * What DNS stands for
 * What is DNS main role
 ## DNS Record Types
-* A
-* CNAME
-* TXT
-* MX
-
-
+* A   * CNAME   * TXT   * MX
