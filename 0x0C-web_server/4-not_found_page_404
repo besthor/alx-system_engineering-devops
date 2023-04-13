@@ -1,26 +1,32 @@
-#!/usr/bin/env bash
-# A bash script that installs nginx on an ubuntu machine.
-# This scripts also configures the default webpage served to be "Hello World!"
-# When request url matches /redirect_me, it redirects to my youtube channel.
-# When a page/file not found in the document root is requested, the 404.html
-# page is served to the client as stated with the error_page directive.
+# This Puppet script installs nginx web server and sets up a redirect from /redirect_me to a blog website
 
-sudo apt-get update -y
+# Install the nginx package if it's not already installed
+package {'nginx':
+  ensure => 'present',
+}
 
-sudo apt-get install nginx -y
+# Run the command to update the system and install nginx
+exec {'install':
+  command  => 'sudo apt-get update ; sudo apt-get -y install nginx',
+  provider => shell,
+}
 
-echo "Hello World!" | sudo dd status=none of=/var/www/html/index.html
+# Create a basic HTML file to verify that nginx is working
+exec {'Hello':
+  command  => 'echo "Hello World!" | sudo tee /var/www/html/index.html',
+  provider => shell,
+}
 
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
+# Configure nginx to redirect /redirect_me to a specific website
+exec {'redirect':
+  command  => 'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/https://github.com/besthor\/;\\n\\t}/" /etc/nginx/sites-available/default',
+  provider => shell,
+}
 
-NEW_RULE="\\\n\tlocation /redirect_me {\n\t\t return 301 https://www.youtube.com/@sammykingx;\n\t}\n"
+# Restart nginx to apply the changes
+exec {'restart':
+  command  => 'sudo service nginx restart',
+  provider => shell,
+}
 
-sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.backup
 
-sudo sed -i "53i $NEW_RULE" /etc/nginx/sites-available/default
-
-NEW_RULE="\\\n\terror_page 404 /404.html;\n\n\tlocation = /404.html {\n\t\tinternal;\n\t}\n"
-
-sudo sed -i "53i $NEW_RULE" /etc/nginx/sites-available/default
-
-sudo service nginx reload
