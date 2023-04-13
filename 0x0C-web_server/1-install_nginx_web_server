@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
+# Bash script that configures a new Ubuntu machine to match the task requirements
 # Update package index
 sudo apt-get update
 
 # Install nginx
 sudo apt-get install nginx
 
-# Configure nginx to listen on port 80
-sudo sed -i 's/#listen 80 default_server/listen 80 default_server/' /etc/nginx/sites-available/default
+# allowing port 80
+ufw allow 'Nginx HTTP'
+# printing out a string
+echo "Hello World!" > /var/www/html/index.html
 
-# create the 'index.html' file with sudo command
-sudo sh -c 'echo "Hello World!" > /var/www/html/index.html'
-
-# Restart nginx
-sudo service nginx restart
+# restarting my server
+service nginx start
