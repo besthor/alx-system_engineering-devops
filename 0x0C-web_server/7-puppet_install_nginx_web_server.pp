@@ -1,38 +1,24 @@
-# Install Nginx
-package { 'nginx':
-  ensure => 'installed',
+# Script to install nginx using puppet
+
+package {'nginx':
+  ensure => 'present',
 }
 
-# Start Nginx service
-service { 'nginx':
-  ensure => 'running',
-  enable => true,
+exec {'install':
+  command  => 'sudo apt-get update ; sudo apt-get -y install nginx',
+  provider => shell,
 }
 
-# Configure Nginx to listen on port 80
-file { '/etc/nginx/sites-enabled/default':
-  ensure  => file,
-  content => 'server {
-                listen 80;
-                root /var/www/html;
-                index index.html;
-
-                location /redirect_me {
-                    return 301 https://www.example.com/;
-                }
-
-                location / {
-                    add_header X-Content-Type-Options nosniff;
-                    add_header X-Frame-Options "SAMEORIGIN";
-                    add_header X-XSS-Protection "1; mode=block";
-                    add_header Content-Security-Policy "default-src 'self';";
-                    try_files $uri $uri/ =404;
-                }
-            }',
+exec {'Hello World!':
+  command  => 'echo "Hello World!" | sudo dd status=none of=/var/www/html/index.html',
+  provider => shell,
 }
 
-# Create the Hello World! page
-file { '/var/www/html/index.html':
-  ensure  => file,
-  content => 'Hello World!',
+exec {'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/www.youtube.com\/;\\n\\t}/" /etc/nginx/sites-available/default':
+  provider => shell,
+}
+
+exec {'run':
+  command  => 'sudo service nginx restart',
+  provider => shell,
 }
