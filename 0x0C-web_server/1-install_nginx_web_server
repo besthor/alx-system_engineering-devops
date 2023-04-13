@@ -9,4 +9,18 @@ sudo apt-get install nginx -y
 
 echo 'Hello World!' > /var/www/html/index.html
 
+if [ -f /var/www/html/index.html ]; then
+    echo "index.html file created successfully"
+else
+    echo "Failed to create index.html file"
+    exit 1
+fi
+
 sudo service nginx restart
+
+if curl http://localhost/ | grep -q "Hello World!"; then
+    echo "Nginx server is serving the correct page"
+else
+    echo "Nginx server is not serving the correct page"
+    exit 1
+fi
