@@ -1,16 +1,12 @@
 #!/usr/bin/env bash
-# Bash script that configures a new Ubuntu machine to match the task requirements
-# Update package index
-sudo apt-get update
+# A script that installs nginx server on an ubuntu linux distro.
+# The installed server listens to port 80 (HTTP) for connection
+# And serves a default page index.html on the HTTP  GET request.
 
-# Install nginx
-sudo apt-get install nginx
+sudo apt-get update -y
 
-# allowing port 80
-ufw allow 'Nginx HTTP'
+sudo apt-get install nginx -y
 
-# printing out a string
-sudo sh -c echo "Hello World!" > /var/www/html/index.html
+echo 'Hello World!' > /var/www/html/index.html
 
-# restarting my server
-service nginx start
+service nginx restart
