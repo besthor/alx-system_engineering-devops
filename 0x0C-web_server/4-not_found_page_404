@@ -1,4 +1,4 @@
-# This Puppet script installs nginx web server and sets up a redirect from /redirect_me to a blog website
+# This Puppet script installs nginx web server and sets up a redirect from /redirect_me to a github profile
 
 # Install the nginx package if it's not already installed
 package {'nginx':
