@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+# Configured web-01 so that its firewall redirects port 8080/TCP to port 80/TCP.
 #
 # rules.before
 #
