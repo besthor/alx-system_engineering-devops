@@ -1,4 +1,3 @@
-# Configured web-01 so that its firewall redirects port 8080/TCP to port 80/TCP.
 #
 # rules.before
 #
@@ -8,9 +7,6 @@
 #   ufw-before-output
 #   ufw-before-forward
 #
-#
-
-# Here's how you can use UFW to create a port forwarding rule:
 *nat
 :PREROUTING ACCEPT [0:0]
 -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
@@ -40,12 +36,14 @@ COMMIT
 
 # ok icmp codes for INPUT
 -A ufw-before-input -p icmp --icmp-type destination-unreachable -j ACCEPT
+-A ufw-before-input -p icmp --icmp-type source-quench -j ACCEPT
 -A ufw-before-input -p icmp --icmp-type time-exceeded -j ACCEPT
 -A ufw-before-input -p icmp --icmp-type parameter-problem -j ACCEPT
 -A ufw-before-input -p icmp --icmp-type echo-request -j ACCEPT
 
 # ok icmp code for FORWARD
 -A ufw-before-forward -p icmp --icmp-type destination-unreachable -j ACCEPT
+-A ufw-before-forward -p icmp --icmp-type source-quench -j ACCEPT
 -A ufw-before-forward -p icmp --icmp-type time-exceeded -j ACCEPT
 -A ufw-before-forward -p icmp --icmp-type parameter-problem -j ACCEPT
 -A ufw-before-forward -p icmp --icmp-type echo-request -j ACCEPT
