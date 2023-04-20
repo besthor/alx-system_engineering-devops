@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+#  A Bash script that configures a new Ubuntu machine
+
 # Installs nginx server on an ubuntu linux distro.
 sudo apt-get update
 sudo apt-get -y install nginx
@@ -7,7 +9,7 @@ sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
 
 # Configure Nginx to serve Hello World page
-echo 'Hello World!' > /var/www/html/index.html
+sudo echo "Hello World!" > /var/www/html/index.html
 
 # Start Nginx service
 sudo service nginx start
