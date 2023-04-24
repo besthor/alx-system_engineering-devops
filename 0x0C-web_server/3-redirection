@@ -1,17 +1,15 @@
 #!/usr/bin/env bash
-# A script that Configures Nginx to redirect requests
+# Configure your Nginx server so that /redirect_me is
+# redirecting to another page.
 
-# Update package lists
+# update
 sudo apt-get update
+sudo apt-get -y install nginx
+sudo ufw allow "Nginx HTTP"
 
-# Install Nginx
-sudo apt-get install -y nginx
-
-# Configure Nginx to redirect requests
-sudo sed -i '/server_name _;/a \\n    location /redirect_me {\n        return 301 http://example.com/newpage;\n    }' /etc/nginx/sites-available/default
-
-# Test Nginx configuration
+sudo sh -c 'echo "Hello World!" > /var/www/html/index.html'
+sudo sed -i 's|# server_name _;|server_name _;|' /etc/nginx/sites-available/default
+sudo sed -i '/server_name _;/a \\n\tlocation /redirect_me/ {\n\t\treturn 301 https://www.example.com/;\n\t}\n' /etc/nginx/sites-available/default
 sudo nginx -t
 
-# Reload Nginx to apply changes
-sudo service nginx reload
+service nginx restart
