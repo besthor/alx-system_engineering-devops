@@ -1,17 +1,39 @@
 #!/usr/bin/env bash
 # A script that Configures Nginx to redirect requests
 
-# Update package lists
+# Update package listsapt-get update
 sudo apt-get update
 
 # Install Nginx
-sudo apt-get install -y nginx
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+mkdir -p /var/www/html/
+sudo chmod -R 755 /var/www
+echo 'Hello World!' > /var/www/html/index.html
 
 # Configure Nginx to redirect requests
-sudo sed -i '/server_name _;/a \\n    location /redirect_me {\n        return 301 http://example.com/newpage;\n    }' /etc/nginx/sites-available/default
+SERVER_CONFIG=\
+"server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	root /var/www/html;
+	index index.html index.htm index.nginx-debian.html;
+	server_name _;
+	location / {
+		try_files \$uri \$uri/ =404;
+	}
+	if (\$request_filename ~ redirect_me){
+		rewrite ^ https://github.com/besthor.git permanent;
+	}
+}"
+
+bash -c "echo -e '$SERVER_CONFIG' > /etc/nginx/sites-enabled/default"
+
+if [ "$(pgrep -c nginx)" -le 0 ]; then
+	service nginx start
+else
+	service nginx restart
+fi
 
 # Test Nginx configuration
 sudo nginx -t
-
-# Reload Nginx to apply changes
-sudo service nginx reload
