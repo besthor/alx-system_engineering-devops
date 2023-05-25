@@ -1,8 +1,6 @@
 # `Welcome to "Command line for the win!"`
 Are you ready to put your Linux skills to the ultimate test and prove that you have what it takes to survive these stages? 
-![](https://www.fosslinux.com/wp-content/uploads/2023/02/The-Guide-to-Playing-Games-on-Linux.png)
-
-![](https://www.tecmint.com/wp-content/uploads/2016/08/Best-Linux-Gaming-Distributions.png)
+#
 
 ![](https://cdn.cloudflare.steamstatic.com/steam/apps/1309610/header.jpg?t=1683818158)
 
