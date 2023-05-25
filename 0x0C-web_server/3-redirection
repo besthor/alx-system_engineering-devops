@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# A script that Configures Nginx to redirect requests
+# A script that Configures nginx to redirect requests
 
-# Update package listsapt-get update
-sudo apt-get update
+# Update packages 
+sudo apt update
 
 # Install Nginx
-sudo apt-get -y install nginx
+sudo apt -y install nginx
 sudo ufw allow 'Nginx HTTP'
 mkdir -p /var/www/html/
 sudo chmod -R 755 /var/www
