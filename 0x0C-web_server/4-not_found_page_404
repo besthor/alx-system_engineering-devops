@@ -1,32 +1,38 @@
-# This Puppet script installs nginx web server and sets up a redirect from /redirect_me to a github profile
+#!/usr/bin/env bash
+#configure a custom 404 page
 
-# Install the nginx package if it's not already installed
-package {'nginx':
-  ensure => 'present',
+sudo apt-get update
+sudo apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+chmod -R 755 /var/www
+echo 'Hello World' > /var/www/html/index.html
+
+new_config=\
+"server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+               root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+        server_name _;
+        location / {
+                try_files \$uri \$uri/ =404;
+        }
+        error_page 404 /404.html;
+        location  /404.html {
+            internal;
+        }
+        
+        if (\$request_filename ~ redirect_me){
+            rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+        }
 }
+"
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+echo "$new_config" > /etc/nginx/sites-available/default
 
-# Run the command to update the system and install nginx
-exec {'install':
-  command  => 'sudo apt-get update ; sudo apt-get -y install nginx',
-  provider => shell,
-}
-
-# Create a basic HTML file to verify that nginx is working
-exec {'Hello':
-  command  => 'echo "Hello World!" | sudo tee /var/www/html/index.html',
-  provider => shell,
-}
-
-# Configure nginx to redirect /redirect_me to a specific website
-exec {'redirect':
-  command  => 'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/https://github.com/besthor\/;\\n\\t}/" /etc/nginx/sites-available/default',
-  provider => shell,
-}
-
-# Restart nginx to apply the changes
-exec {'restart':
-  command  => 'sudo service nginx restart',
-  provider => shell,
-}
-
-
+if [ "$(pgrep nginx)" -le 0 ];
+then
+    service nginx start
+else
+    service nginx restart
+fi;
