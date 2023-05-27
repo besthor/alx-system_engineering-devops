@@ -8,4 +8,4 @@ sudo apt-get install nginx -y
 
 echo 'Hello World!' > /var/www/html/index.html
 
-service nginx restart
+service nginx restart 
