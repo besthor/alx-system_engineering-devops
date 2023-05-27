@@ -1,39 +1,14 @@
 #!/usr/bin/env bash
-# A script that Configures nginx to redirect requests
+# A bash script that installs nginx on an ubuntu machine.
+# The scripts also configures the default webpage served to be "Hello World!"
+# When the following url requested matches /redirect_me, it redirects to a youtube channel.
 
-# Update packages 
-sudo apt update
 
-# Install Nginx
-sudo apt -y install nginx
-sudo ufw allow 'Nginx HTTP'
-mkdir -p /var/www/html/
-sudo chmod -R 755 /var/www
-echo 'Hello World!' > /var/www/html/index.html
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo chown -R "$USER":"$USER" /var/www
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sed -i "48i\\\tif (\$request_filename ~ redirect_me){\n\t\t\
+rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;\n\t}" /etc/nginx/sites-available/default
 
-# Configure Nginx to redirect requests
-SERVER_CONFIG=\
-"server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
-	root /var/www/html;
-	index index.html index.htm index.nginx-debian.html;
-	server_name _;
-	location / {
-		try_files \$uri \$uri/ =404;
-	}
-	if (\$request_filename ~ redirect_me){
-		rewrite ^ https://github.com/besthor.git permanent;
-	}
-}"
-
-bash -c "echo -e '$SERVER_CONFIG' > /etc/nginx/sites-enabled/default"
-
-if [ "$(pgrep -c nginx)" -le 0 ]; then
-	service nginx start
-else
-	service nginx restart
-fi
-
-# Test Nginx configuration
-sudo nginx -t
+service nginx restart
