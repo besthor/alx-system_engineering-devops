@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
-# A script that installs nginx server on an ubuntu linux distro.
-# The installed server listens to port 80 (HTTP) for connection
-# And serves a default page index.html on the HTTP  GET request.
-
-sudo apt-get update -y
-sudo apt-get install nginx -y
+# confiures a new ubuntu server by installing nginx
+sudo apt-get update
+sudo apt-get -y install nginx
 echo 'Hello World!' | sudo tee /var/www/html/index.html
-
-sudo service nginx restart 
+sudo service nginx start
