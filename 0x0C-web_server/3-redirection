@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# A Bash script that Installs, configures, and starts the server
-apt update
-apt install -y nginx
+# Installs, configures, and starts the server
+apt-get update
+apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
 mkdir -p /var/www/html/
 sudo chmod -R 755 /var/www
