@@ -1,22 +1,7 @@
 #!/usr/bin/env bash
-# Configure HAproxy so that it send traffic to web-01 and web-02
-# Distribute requests using a roundrobin algorithm
-# Make sure that HAproxy can be managed via an init script
-
-sudo apt-get update 
-sudo apt-get -y install haproxy
-
-# Configure haproxy
-cat << EOF |sudo tee -a /etc/haproxy/haproxy.cfg
-listen load_balancer
-        bind :80
-	mode http
-	option httpclose
-	option forwardfor
-        balance roundrobin
-        server 109126-web-01 3.89.146.36:80 check
-        server 109126-web-02 54.237.21.20:80 check
-EOF
-
-# Restart haproxy using init script
-sudo /etc/init.d/haproxy restart
+# This script configures an Nginx HTTP response header to containa custom header
+sudo apt-get update
+sudo apt-get install -y nginx
+sudo sed -i '/http {/a \
+	add_header X-Served-By $hostname;' /etc/nginx/nginx.conf
+sudo service nginx restart
