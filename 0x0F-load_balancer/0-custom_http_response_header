@@ -1,7 +1,37 @@
 #!/usr/bin/env bash
-# This script configures an Nginx HTTP response header to containa custom header
-sudo apt-get update
-sudo apt-get install -y nginx
-sudo sed -i '/http {/a \
-	add_header X-Served-By $hostname;' /etc/nginx/nginx.conf
-sudo service nginx restart
+# This script install and configure HAproxy
+sudo apt-get update -y
+sudo apt-get install -y haproxy
+sudo mv /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
+sudo touch /etc/haproxy/haproxy.cfg
+sudo chmod 666 /etc/haproxy/haproxy.cfg
+
+echo "global
+		log /dev/log	local0
+		log /dev/log	local1 notice
+		chroot /var/lib/haproxy
+		stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
+		stats timeout 30s
+		user haproxy
+		group haproxy
+		daemon
+		
+defaults
+		log		global
+		mode	http
+		option	httplog
+		option	dontlognull
+		timeout	connect 5000
+		timeout	client 	50000
+		timeout	server	50000
+
+frontend http-in
+		bind *:80
+		default_backend servers
+
+backend servers
+		balance	roundrobin
+		server	149853-web-01 3.89.146.36:80 check
+		server	149853-web-02 54.237.21.20:80 check" | sudo tee -a /etc/haproxy/haproxy.cfg > /dev/null
+
+sudo service haproxy restart
