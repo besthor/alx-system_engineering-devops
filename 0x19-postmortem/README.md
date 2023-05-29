@@ -1,8 +1,17 @@
-0x19. Postmortem
+# `Postmortem`
+#
+![](https://i.imgflip.com/7f2140.jpg)
 
-Any software system will eventually fail, and that failure can come stem from a wide range of possible factors: bugs, traffic spikes, security issues, hardware failures, natural disasters, human error… Failing is normal and failing is actually a great opportunity to learn and improve. Any great Software Engineer must learn from his/her mistakes to make sure that they won’t happen again. Failing is fine, but failing twice because of the same issue is not.
+![](https://i.pinimg.com/originals/63/7e/f6/637ef6f55bc38572167fd17d6ee360de.gif)
 
-A postmortem is a tool widely used in the tech industry. After any outage, the team(s) in charge of the system will write a summary that has 2 main goals:
+#
+![](https://i.imgflip.com/7f2140.jpg)
 
-    To provide the rest of the company’s employees easy access to information detailing the cause of the outage. Often outages can have a huge impact on a company, so managers and executives have to understand what happened and how it will impact their work.
-    And to ensure that the root cause(s) of the outage has been discovered and that measures are taken to make sure it will be fixed.
+![](https://i.pinimg.com/564x/64/01/4a/64014af67518ccac756b021adf38d6f8.jpg)
+#
+![]https://i.pinimg.com/236x/24/56/32/24563280febf9a69f515278a10cf71a5.jpg()
+
+#
+![](https://i.chzbgr.com/full/9590259200/h9104A34F/person-changing-ide-settings-fun-now-code-is-being-executed-by-vlc-media-player)
+#
+![](https://1.bp.blogspot.com/-eQylSHUeACU/YOFqjXED6LI/AAAAAAAAFPU/znIjCX1YX0MEA6XYDwumWPhgnDuOuDGPwCLcBGAsYHQ/w320-h320/HTML%2Bas%2Bprogramming%2Blanguage%2Bmemes.jpg)
