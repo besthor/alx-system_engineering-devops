@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
-# A Bash script that uses ssh to connect to your server
+# creating a bash script that uses ssh to connect to your server
+# Using the private key ~/.ssh/school with the user ubuntu.
 
-ssh -o "IdentitiesOnly yes" -o "PreferredAuthentications publickey" -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null" ubuntu@3.89.146.36
+ssh -i ~/.ssh/school ubuntu@54.209.217.190
