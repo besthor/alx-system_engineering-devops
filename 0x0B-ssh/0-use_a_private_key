@@ -1,4 +1,4 @@
-#!/bin/bash
 #!/usr/bin/env bash
 # A Bash script that uses ssh to connect to your server
+
 ssh -o "IdentitiesOnly yes" -o "PreferredAuthentications publickey" -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null" ubuntu@3.89.146.36
