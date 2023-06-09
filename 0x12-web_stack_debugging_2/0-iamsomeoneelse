@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# Runs the whoami command under the user passed as argument.
-sudo -u "$1" whoami
+# Creates and runs whoami command as specified user
+
+sudo -u "$1" bash -c whoami
