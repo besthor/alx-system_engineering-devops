@@ -6,4 +6,8 @@ if [[ $# -ne 1 ]]; then
   exit 1
 fi
 
-sudo -u "$1" id -un
+if id "$1" &>/dev/null; then
+  sudo -u "$1" whoami
+else
+  echo "User $1 does not exist."
+fi
