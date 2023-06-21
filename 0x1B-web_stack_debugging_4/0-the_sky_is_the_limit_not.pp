@@ -1,17 +1,14 @@
-# This manifest adjusts the web stack configuration for Nginx to handle 1000 requests with 100 at a time
+# This manuscript increases the amount of traffic an Nginx server can handle
 
-# Increase the worker connections in Nginx
-file { '/etc/nginx/nginx.conf':
-  ensure  => present,
-  content => "# Adjusted Nginx configuration\n\nworker_connections 100;\nevents {\n  worker_connections 1000;\n}\n",
-  notify  => Service['nginx'],
+# Increase the ULIMIT of the default file
+file { 'fix-for-nginx':
+  path    => '/etc/default/nginx',
+  ensure  => 'file',
+  content => inline_template('<%= File.read("/etc/default/nginx").gsub(/15/, "4096") %>'),
 }
 
 # Restart Nginx
-service { 'nginx':
-  ensure     => running,
-  enable     => true,
-  hasrestart => true,
-  subscribe  => File['/etc/nginx/nginx.conf'],
+-> exec { 'nginx-restart':
+  command => 'nginx restart',
+  path    => '/etc/init.d/',
 }
-
