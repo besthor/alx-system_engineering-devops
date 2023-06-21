@@ -1,5 +1,0 @@
-#!/usr/binenv bash
-# using ssh to connect to a server
-
-ssh -i ~/.ssh/school ubuntu
-
