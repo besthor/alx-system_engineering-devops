@@ -2,12 +2,14 @@
 # commands to install nginx on web sever
 
 sudo apt-get update
-sudo apt-get install nginx
-sudo ufw 'Nginx HTTP'
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
 
-echo "Hello World!" | sudo tee /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
 
-# testing nginx configurations
+#testing nginx configurations
+
 sudo nginx -t
+sudo service nginx start
 
-sudo service nginx reload
+
