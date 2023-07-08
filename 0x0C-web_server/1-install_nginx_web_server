@@ -9,7 +9,8 @@ sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
 
 # Creating an index.html page
-echo "Hello World!" > /var/www/html/index.html
+# echo "Hello World!" > /var/www/html/index.html
+echo "Hello World!" | sudo tee /var/www/html/index.html
 
 # Testing Nginx configurations for Syntax errors
 sudo nginx -t
