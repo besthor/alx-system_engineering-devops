@@ -1,9 +1,29 @@
 #!/usr/bin/env bash
-# Script that configures Nginx server with a custom header
-apt-get -y update
-apt-get -y install nginx
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
-sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/besthor permanent;\n\n\terror_page 404 \/custom_404.html;\n\tlocation = \/custom_404.html {\n\t\troot \/usr\/share\/nginx\/html;\n\t\tinternal;\n\t}/" /etc/nginx/sites-available/default
-sed -i "s/include \/etc\/nginx\/sites-enabled\/\*;/include \/etc\/nginx\/sites-enabled\/\*;\n\tadd_header X-Served-By \"$HOSTNAME\";/" /etc/nginx/nginx.conf
-service nginx start
+# Configuring web-01 to have an HTTP response header
+
+# Updating packages
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Creating an index page
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Performing a redirection
+new_string="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/besthor permanent;"
+
+sudo sed -i "s/server_name _;/$new_string/" /etc/nginx/sites-enabled/default
+
+# Creating a custom error page
+
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+new_string="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+
+# Custom HTTP response header
+
+sudo sed -i "s/listen 80 default_server;/$new_string/" /etc/nginx/sites-enabled/default
+
+# Test for syntax errors
+sudo nginx -t
+
+# Restart nginx
+sudo service nginx restart
