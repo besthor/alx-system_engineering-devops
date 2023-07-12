@@ -10,4 +10,4 @@
 * What DNS stands for
 * What is DNS main role
 ## `DNS Record Types`
-* A   * CNAME   * TXT   * MX
+**A**  **CNAME**   **TXT**   **MX**
