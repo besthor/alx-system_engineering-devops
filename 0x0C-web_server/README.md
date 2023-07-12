@@ -1,4 +1,4 @@
-# `Web server`
+# `Web-Server`
 ![](https://www.hostinger.in/tutorials/wp-content/uploads/sites/2/2018/06/How-Server-Work.png)
 
 
