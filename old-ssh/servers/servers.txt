@@ -1,0 +1,5 @@
+Your servers
+Name		Username	IP		State	
+120054-web-01	ubuntu		100.26.136.168	running	
+120054-web-02	ubuntu		54.89.108.169	running	
+120054-lb-01			
