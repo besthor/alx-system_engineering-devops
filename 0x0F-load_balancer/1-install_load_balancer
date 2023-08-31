@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #!/usr/bin/env bash
 # Create a script to install and configure HAProxy on lb-01 server
 # Configure HAProxy to send traffic to web-01 and web-02 servers
@@ -32,4 +30,3 @@ sudo haproxy -c -f /etc/haproxy/haproxy.cfg
 
 # Restart the Nginx service
 sudo service haproxy restart
->>>>>>> b990f9548a3b3fd6100995fbfcd1a11fee25ab9a
